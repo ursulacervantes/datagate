@@ -8,13 +8,6 @@ export default class Header extends React.PureComponent {
     dispatch: PropTypes.func.isRequired,
   };
 
-  handleClickLogout = e => {
-    e.preventDefault();
-    const { dispatch } = this.props;
-
-    dispatch(logOut());
-  };
-
   render() {
     return (
       <header className="app__header">
@@ -23,17 +16,17 @@ export default class Header extends React.PureComponent {
           <div className="app__header__menu">
             <ul className="list-unstyled">
               <li>
-                <a href="#review" className="app__review" onClick={this.handleClickLogout}>
+                <a href="#review" className="app__review">
                   <span>Review</span>
                 </a>
               </li>
               <li>
-                <a href="#request" className="app__request" onClick={this.handleClickLogout}>
+                <a href="/request" className="app__request">
                   <span>Request</span>
                 </a>
               </li>
               <li>
-                <a href="#manage" className="app__manage" onClick={this.handleClickLogout}>
+                <a href="/manage" className="app__manage">
                   <span>Manage</span>
                 </a>
               </li>
