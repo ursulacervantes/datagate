@@ -21,9 +21,18 @@ export default {
         seletectedItem: { $set: item },
       });
     },
-    [ActionTypes.EDIT_ITEM]: (state) => immutable(state, {
-      items: { $set: 'running' },
-      dataStatus: { $set: STATUS.VIEW },
-    }),
+    [ActionTypes.EDIT_ITEM]: (state, { payload }) => {
+      state.items.forEach((e) => {
+      	if(e.id === payload.id) {
+          e = payload;
+          return false;
+        }
+
+      });
+      return immutable(state, {
+        seletectedItem: { $set: payload },
+      });
+
+    },
   }, itemState),
 };

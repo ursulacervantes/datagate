@@ -132,5 +132,5 @@ export const {
 } = createActions({
   [ActionTypes.GET_ITEM_LIST]: () => (items),
   [ActionTypes.GET_ITEM]: (id: string) => ({ id }),
-  [ActionTypes.EDIT_ITEM]: () => ({}),
+  [ActionTypes.EDIT_ITEM]: (item: object) => (item),
 });
