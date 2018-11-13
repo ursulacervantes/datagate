@@ -13,6 +13,7 @@ import { showAlert } from 'actions';
 
 import Home from 'routes/Home';
 import Private from 'routes/Private';
+import Manage from 'routes/Manage';
 import NotFound from 'routes/NotFound';
 
 import Header from 'containers/Header';
@@ -62,6 +63,7 @@ export class App extends React.Component {
             <Switch>
               <RoutePublic isAuthenticated={user.isAuthenticated} path="/" exact component={Home} />
               <RoutePrivate isAuthenticated={user.isAuthenticated} path="/private" component={Private} />
+              <RoutePrivate isAuthenticated={user.isAuthenticated} path="/manage" component={Manage} />
               <Route component={NotFound} />
             </Switch>
           </main>
