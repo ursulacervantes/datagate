@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { STATUS } from 'constants/index';
+
 export default class EditItem extends React.Component {
 
   static propTypes = {
@@ -20,9 +22,15 @@ export default class EditItem extends React.Component {
     console.log("input has changed");
   }
 
+  handleActionType = () => {
+    this.props.handleActionType(STATUS.VIEW);
+  }
+
   render() {
     return (
       <div key="EditItem" className="app__view-item">
+
+          <div onClick={this.handleActionType}>Save</div>
 
           <span>Key name</span>
           <input value={this.props.item.name} onChange={this.onInputChange}></input>

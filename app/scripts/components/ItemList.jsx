@@ -29,8 +29,8 @@ export class ItemList extends React.Component {
     return (
       <div key="ItemList" className="app__item-list">
           <ul>
-            { this.props.items.map(v => (
-                <li key={v.id} id={v.id} onClick={this.handleClick}>{v.keyName}</li>
+            { !!this.props.items && this.props.items.map(v => (
+                <li key={v.id} id={v.id} onClick={this.handleClick}>{v.name}</li>
             ))}
           </ul>
       </div>
@@ -40,7 +40,6 @@ export class ItemList extends React.Component {
 
 /* istanbul ignore next */
 function mapStateToProps(state) {
-  console.log("Itel List redux ",state.user.items );
   return {
     items: state.user.items,
   };

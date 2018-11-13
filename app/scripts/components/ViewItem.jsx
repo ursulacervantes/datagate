@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { STATUS } from 'constants/index';
+
+
 export default class ViewItem extends React.Component {
   constructor(props) {
     super(props);
@@ -8,13 +11,18 @@ export default class ViewItem extends React.Component {
 
   handleClick = (e) => {
     e.preventDefault();
-    console.log("item selected");
   };
+
+  handleActionType = () =>{
+    this.props.handleActionType(STATUS.EDIT);
+  }
 
   render() {
     return (
       <div key="ViewItem" className="app__view-item">
+
           <h1>{this.props.item.name}</h1>
+          <div onClick={this.handleActionType}>Edit this</div>
 
           <span>Description</span>
           <p>{this.props.item.description}</p>

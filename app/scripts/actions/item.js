@@ -9,19 +9,119 @@ import { ActionTypes } from 'constants/index';
 
 const items = [
   { id: '1',
-    keyName: 'user_id',
+    name: 'user_id',
+    description: 'lala',
+    type: 'integer',
+    sensitivity: {
+      checked: true,
+      description: 'This is personal data, and cannot be distributed in raw form'
+    },
+    values: [
+      {
+        key: 'value1',
+        value: 'sadf',
+        description: 'dsfasdf'
+      },
+      {
+        key: 'value2',
+        value: 'ger',
+        description: 'hethg'
+      }
+    ]
   },
   { id: '2',
-    keyName: 'item_id'
+    name: 'item_id',
+    description: 'lala',
+    type: 'integer',
+    sensitivity: {
+      checked: false,
+      description: 'This is personal data, and cannot be distributed in raw form'
+    },
+    values: [
+      {
+        key: 'value1',
+        value: 'sadf',
+        description: 'dsfasdf'
+      }
+    ]
   },
   { id: '3',
-    keyName: 'user_email'
+    name: 'user_email',
+    description: 'lala',
+    type: 'string',
+    sensitivity: {
+      checked: true,
+      description: 'This is personal data, and cannot be distributed in raw form'
+    },
+    values: [
+      {
+        key: 'value1',
+        value: 'sadf',
+        description: 'dsfasdf'
+      },
+      {
+        key: 'value2',
+        value: 'ger',
+        description: 'hethg'
+      },
+      {
+        key: 'value3',
+        value: 'ewr23q',
+        description: 'dgrsty34'
+      }
+    ]
   },
   { id: '4',
-    keyName: 'items_view'
+    name: 'items_view',
+    description: 'lala',
+    type: 'string',
+    sensitivity: {
+      checked: true,
+      description: 'This is personal data, and cannot be distributed in raw form'
+    },
+    values: [
+      {
+        key: 'value1',
+        value: 'sadf',
+        description: 'dsfasdf'
+      },
+      {
+        key: 'value2',
+        value: 'ger',
+        description: 'hethg'
+      },
+      {
+        key: 'value3',
+        value: 'ewr23q',
+        description: 'dgrsty34'
+      }
+    ]
   },
   { id: '5',
-    keyName: 'items_favorites'
+    name: 'items_favorites',
+    description: 'lala',
+    type: 'string',
+    sensitivity: {
+      checked: true,
+      description: 'This is personal data, and cannot be distributed in raw form'
+    },
+    values: [
+      {
+        key: 'value1',
+        value: 'sadf',
+        description: 'dsfasdf'
+      },
+      {
+        key: 'value2',
+        value: 'ger',
+        description: 'hethg'
+      },
+      {
+        key: 'value3',
+        value: 'ewr23q',
+        description: 'dgrsty34'
+      }
+    ]
   }
 ];
 
