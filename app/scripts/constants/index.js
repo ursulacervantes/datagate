@@ -26,6 +26,8 @@ export const ActionTypes = keyMirror({
   GET_ITEM_LIST: undefined,
   GET_ITEM: undefined,
   EDIT_ITEM: undefined,
+  GET_REQUEST_LIST: undefined,
+  FILTER_REQUEST: undefined,
 });
 
 /**
