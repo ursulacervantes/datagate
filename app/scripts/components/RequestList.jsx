@@ -21,12 +21,21 @@ export class RequestList extends React.Component {
 
   filterList = (e) => {
     e.preventDefault();
-    dispatch(filterRequestList('Denied'));
+    const { dispatch } = this.props;
+    dispatch(filterRequestList(e.target.innerText));
   };
 
   render() {
     return (
       <div key="RequestList" className="app__view-item">
+
+          <div>
+            <div onClick={this.filterList}>ALL</div>
+            <div onClick={this.filterList}>PENDING</div>
+            <div onClick={this.filterList}>APPROVED</div>
+            <div onClick={this.filterList}>DENIED</div>
+          </div>
+
           <table>
             <thead>
               <tr><th>Pending Requests</th></tr>
@@ -37,14 +46,14 @@ export class RequestList extends React.Component {
               </tr>
             </thead>
             <tbody>
-              {this.props.requests
-                .map(v => (
-                  <tr key={v.id}>
-                    <td>{v.date}</td>
-                    <td>{v.reason}</td>
-                    <td>{v.status}</td>
-                  </tr>
-              ))}
+            {!!this.props.requests && this.props.requests
+              .map(v => (
+                <tr key={v.id}>
+                  <td>{v.date}</td>
+                  <td>{v.reason}</td>
+                  <td>{v.status}</td>
+                </tr>
+            ))}
             </tbody>
           </table>
       </div>
@@ -54,9 +63,15 @@ export class RequestList extends React.Component {
 
 /* istanbul ignore next */
 function mapStateToProps(state) {
-  console.log('state ',state);
+  const { requests=[], filterValue='' } = state.user;
+  if(filterValue === 'ALL') {
+    return {
+      requests
+    }
+  }
+
   return {
-    requests: state.user.requests,
+    requests: requests.filter(d => d.status.toUpperCase() === filterValue.toUpperCase()),
   };
 }
 

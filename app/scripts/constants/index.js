@@ -27,7 +27,7 @@ export const ActionTypes = keyMirror({
   GET_ITEM: undefined,
   EDIT_ITEM: undefined,
   GET_REQUEST_LIST: undefined,
-  FILTER_REQUEST: undefined,
+  FILTER_REQUEST_LIST: undefined,
 });
 
 /**
@@ -42,4 +42,8 @@ export const STATUS = {
   ERROR: 'error',
   VIEW: 'view',
   EDIT: 'edit',
+  APPROVED: 'approved',
+  DENIED: 'denied',
+  PENDING: 'pending',
+  ALL: 'all',
 };

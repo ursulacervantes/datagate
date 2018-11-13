@@ -16,7 +16,6 @@ export class ItemList extends React.Component {
 
   componentDidMount() {
     const { dispatch } = this.props;
-
     dispatch(getItemList());
   }
 

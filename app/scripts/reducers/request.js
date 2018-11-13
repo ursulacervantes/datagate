@@ -5,21 +5,16 @@ import { ActionTypes } from 'constants/index';
 
 export const requestState = {
   requests: [],
+  filterValue: 'ALL',
 };
 
 export default {
   user: handleActions({
-    [ActionTypes.GET_REQUEST_LIST]: (state, { payload }) => {
-      console.log(payload);
-      return immutable(state, {
-        requests: { $set: payload },
-      })
-    },
-    [ActionTypes.FILTER_REQUEST]: (state, { payload: { status } }) => {
-      const request = state.items.filter(d => d.status === status);
-      return immutable(state, {
-        requests: { $set: request },
-      });
-    },
+    [ActionTypes.GET_REQUEST_LIST]: (state, { payload }) => immutable(state, {
+      requests: { $set: payload },
+    }),
+    [ActionTypes.FILTER_REQUEST_LIST]: (state, { payload: { status } }) => immutable(state, {
+      filterValue: { $set: status },
+    }),
   }, requestState),
 };

@@ -11,10 +11,12 @@ export const itemState = {
 
 export default {
   user: handleActions({
-    [ActionTypes.GET_ITEM_LIST]: (state, { payload }) => immutable(state, {
-      items: { $set: payload },
-      seletectedItem: payload.length > 0 ? { $set: payload[0] } : {},
-    }),
+    [ActionTypes.GET_ITEM_LIST]: (state, { payload }) => {
+      return immutable(state, {
+        items: { $set: payload },
+        seletectedItem: payload.length > 0 ? { $set: payload[0] } : {},
+      })
+    },
     [ActionTypes.GET_ITEM]: (state, { payload: { id } }) => {
       const item = state.items.find(d => d.id === id);
       return immutable(state, {
@@ -25,7 +27,6 @@ export default {
       state.items.forEach((e) => {
       	if(e.id === payload.id) {
           e = payload;
-          return false;
         }
 
       });

@@ -1,7 +1,7 @@
 // @flow
 /**
  * @module Actions/Request
- * @desc Requests Actions
+ * @desc Request Actions
  */
 import { createActions } from 'redux-actions';
 
@@ -25,7 +25,7 @@ const requests = [
     date: '2017/09/21',
     reason: 'Investigation',
     status: 'Denied',
-  }
+  },
 ];
 
 export const {
@@ -33,5 +33,5 @@ export const {
   filterRequestList,
 } = createActions({
   [ActionTypes.GET_REQUEST_LIST]: () => (requests),
-  [ActionTypes.FILTER_REQUEST]: (status: string) => ({ status }),
+  [ActionTypes.FILTER_REQUEST_LIST]: (status: string) => ({ status }),
 });
