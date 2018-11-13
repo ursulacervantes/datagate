@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { logOut } from 'actions';
-import Logo from 'components/Logo';
 
 export default class Header extends React.PureComponent {
   static propTypes = {
@@ -20,12 +19,22 @@ export default class Header extends React.PureComponent {
     return (
       <header className="app__header">
         <div className="app__container">
-          <Logo />
+          Data Gate
           <div className="app__header__menu">
             <ul className="list-unstyled">
               <li>
-                <a href="#logout" className="app__logout" onClick={this.handleClickLogout}>
-                  <span>logout</span><i className="i-sign-out" />
+                <a href="#review" className="app__review" onClick={this.handleClickLogout}>
+                  <span>Review</span>
+                </a>
+              </li>
+              <li>
+                <a href="#request" className="app__request" onClick={this.handleClickLogout}>
+                  <span>Request</span>
+                </a>
+              </li>
+              <li>
+                <a href="#manage" className="app__manage" onClick={this.handleClickLogout}>
+                  <span>Manage</span>
                 </a>
               </li>
             </ul>

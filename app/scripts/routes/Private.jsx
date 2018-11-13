@@ -1,7 +1,5 @@
 import React from 'react';
 
-import Github from 'containers/GitHub';
-
 export default class Private extends React.PureComponent {
   render() {
     return (
@@ -17,13 +15,6 @@ export default class Private extends React.PureComponent {
                 here
               </a>
             </p>
-          </div>
-          <div className="app__private__content">
-            <div className="app__private__intro">
-              <h5>Here's some GitHub data</h5>
-              <small className="text-muted"><i>*Just to have some requests in the sagas...</i></small>
-            </div>
-            <Github />
           </div>
         </div>
       </div>
