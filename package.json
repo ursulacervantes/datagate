@@ -9,7 +9,7 @@
     "url": "https://github.com/ursulacervantes/datagate"
   },
   "engines": {
-    "node": ">=0.10.0"
+    "node": "8.11.1"
   },
   "bugs": "https://github.com/ursulacervantes/datagate/issues",
   "license": "MIT",
