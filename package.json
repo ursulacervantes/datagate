@@ -1,14 +1,17 @@
 {
-  "name": "react-redux-saga-boilerplate",
-  "title": "react-redux-saga-boilerplate",
-  "description": "React-Redux-Saga Boilerplate",
+  "name": "olx-case-study",
+  "title": "olx-case-study",
+  "description": "OLX Case Study",
   "version": "2018.10.0",
-  "author": "Gil Barbara <gilbarbara@gmail.com>",
+  "author": "Ursula Cervantes <ursula.cervnantes@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/gilbarbara/react-redux-saga-boilerplate"
+    "url": "https://github.com/ursulacervantes/datagate"
   },
-  "bugs": "https://github.com/gilbarbara/react-redux-saga-boilerplate/issues",
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "bugs": "https://github.com/ursulacervantes/datagate/issues",
   "license": "MIT",
   "keywords": [
     "React",
