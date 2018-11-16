@@ -20,7 +20,7 @@ RoutePublic.propTypes = {
 };
 
 RoutePublic.defaultProps = {
-  to: '/private',
+  to: '/manage',
 };
 
 export default RoutePublic;

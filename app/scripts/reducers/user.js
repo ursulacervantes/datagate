@@ -4,7 +4,7 @@ import immutable from 'immutability-helper';
 import { ActionTypes } from 'constants/index';
 
 export const userState = {
-  isAuthenticated: false,
+  isAuthenticated: true,
   status: 'idle',
 };
 
