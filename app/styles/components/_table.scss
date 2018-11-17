@@ -1,0 +1,87 @@
+.app__table {
+
+  &__filter {
+    overflow: hidden;
+    margin-bottom: 15px;
+    border-bottom: 1px solid $app-secondary-color;
+
+    a {
+      float: left;
+      display: block;
+      color: black;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 17px;
+      border-bottom: 3px solid transparent;
+
+      &:hover {
+        border-bottom: 3px solid black;
+      }
+      &.active {
+        border-bottom: 3px solid black;
+      }
+    }
+
+  }
+
+  table {
+    width: 100%;
+  }
+
+  thead {
+    vertical-align: middle;
+    text-transform: uppercase;
+
+    .__primary__title {
+      background-color: $app-color;
+      color: white;
+      padding: 10px 10px;
+    }
+
+    .__secondary__title {
+      background-color: $app-secondary-color;
+      color: black;
+
+      >th {
+        padding: 10px 10px;
+      }
+    }
+  }
+
+  tbody {
+    td {
+      padding: 5px 10px;
+
+      button {
+          border: none;
+          border-radius: 8px;
+          color: white;
+          padding: 10px 15px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          margin: 4px 2px;
+          cursor: pointer;
+          width: 100px;
+
+          &.pending {
+            background-color: #444242;
+          }
+          &.approved {
+            background-color: $app-color;
+          }
+          &.denied {
+            background-color: #ce2e2e;
+          }
+
+      }
+    }
+
+    tr:nth-child(even){
+      background-color: $app-secondary-color;
+    }
+  }
+
+}

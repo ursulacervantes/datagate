@@ -27,19 +27,21 @@ export class RequestList extends React.Component {
 
   render() {
     return (
-      <div key="RequestList" className="app__view-item">
+      <div key="RequestList" className="app__table">
 
-          <div>
-            <div onClick={this.filterList}>ALL</div>
-            <div onClick={this.filterList}>PENDING</div>
-            <div onClick={this.filterList}>APPROVED</div>
-            <div onClick={this.filterList}>DENIED</div>
+          <div className="app__table__filter">
+            <a onClick={this.filterList} className="active">ALL</a>
+            <a onClick={this.filterList}>PENDING</a>
+            <a onClick={this.filterList}>APPROVED</a>
+            <a onClick={this.filterList}>DENIED</a>
           </div>
 
           <table>
             <thead>
-              <tr><th>Pending Requests</th></tr>
               <tr>
+                <th className="__primary__title" colspan="3">Pending Requests</th>
+              </tr>
+              <tr className="__secondary__title">
                 <th>Date</th>
                 <th>Reason</th>
                 <th>Status</th>
@@ -51,7 +53,9 @@ export class RequestList extends React.Component {
                 <tr key={v.id}>
                   <td>{v.date}</td>
                   <td>{v.reason}</td>
-                  <td>{v.status}</td>
+                  <td>
+                    <button className={v.status.toLowerCase()}>{v.status}</button>
+                  </td>
                 </tr>
             ))}
             </tbody>
