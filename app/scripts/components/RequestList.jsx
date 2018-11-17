@@ -4,6 +4,13 @@ import { connect } from 'react-redux';
 
 import { getRequestList, filterRequestList } from 'actions';
 
+const filterItems = [
+   'ALL',
+   'PENDING',
+   'APPROVED',
+   'DENIED'
+];
+
 export class RequestList extends React.Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
@@ -12,6 +19,10 @@ export class RequestList extends React.Component {
 
   constructor(props) {
     super(props);
+
+    this.state = {
+      active: filterItems[0]
+    };
   }
 
   componentDidMount() {
@@ -21,6 +32,7 @@ export class RequestList extends React.Component {
 
   filterList = (e) => {
     e.preventDefault();
+    this.setState({ active: e.target.innerText});
     const { dispatch } = this.props;
     dispatch(filterRequestList(e.target.innerText));
   };
@@ -30,10 +42,13 @@ export class RequestList extends React.Component {
       <div key="RequestList" className="app__table">
 
           <div className="app__table__filter">
-            <a onClick={this.filterList} className="active">ALL</a>
-            <a onClick={this.filterList}>PENDING</a>
-            <a onClick={this.filterList}>APPROVED</a>
-            <a onClick={this.filterList}>DENIED</a>
+            {filterItems.map(filterItem =>
+                <a key={filterItem} 
+                  onClick={this.filterList.bind(this)}
+                  className={this.state.active === filterItem ? 'active' : ''}>
+                  {filterItem}
+                </a>
+             )}
           </div>
 
           <table>
