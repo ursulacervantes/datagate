@@ -39,7 +39,7 @@ export class RequestList extends React.Component {
           <table>
             <thead>
               <tr>
-                <th className="__primary__title" colspan="3">Pending Requests</th>
+                <th className="__primary__title" colSpan="3">Pending Requests</th>
               </tr>
               <tr className="__secondary__title">
                 <th>Date</th>

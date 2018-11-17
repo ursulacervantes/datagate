@@ -1,6 +1,24 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
+const menuItems = [
+   'request',
+   'manage',
+];
 
 export default class Header extends React.PureComponent {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      active: menuItems[0]
+    };
+  }
+
+  selectMenu(e) {
+    this.setState({ active: e.target.innerText.toLowerCase() });
+  }
 
   render() {
     return (
@@ -9,21 +27,15 @@ export default class Header extends React.PureComponent {
           <a className="title">Data Gate</a>
           <div className="app__header__menu">
             <ul className="list-unstyled">
-              <li>
-                <a href="#">
-                  <span>Review</span>
-                </a>
-              </li>
-              <li>
-                <a href="/request" className="active">
-                  <span>Request</span>
-                </a>
-              </li>
-              <li>
-                <a href="/manage">
-                  <span>Manage</span>
-                </a>
-              </li>
+              {menuItems.map(menuItem =>
+                  <li key={menuItem}>
+                    <Link to={"/"+menuItem}
+                      className={this.state.active === menuItem ? 'active' : ''}
+                      onClick={this.selectMenu.bind(this)}>
+                      <span>{menuItem}</span>
+                    </Link>
+                  </li>
+               )}
             </ul>
           </div>
         </div>

@@ -59,6 +59,7 @@
       span {
         display: inline-block;
         margin-left: $grid-gutter-width / 12;
+        text-transform: capitalize;
       }
     }
   }
