@@ -13,42 +13,36 @@ export class EditItem extends React.Component {
 
   constructor(props) {
     super(props);
+
+    this.state = {
+      item: {
+        description: '',
+        id: '',
+        name: '',
+        sensitivity: 'on',
+        type: ''
+      }
+    };
   }
 
-  handleClick = (e) => {
-    e.preventDefault();
-    console.log("item selected");
-  };
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.item !== this.state.item) {
+      this.setState({ item: nextProps.item });
+    }
+  }
 
   onInputChange = (e) => {
-    console.log("input has changed");
+    let { item } = this.state;
+    item[e.target.id] = e.target.value;
+
+    this.setState({
+      item,
+    });
   }
 
   handleActionType = () => {
     const { dispatch } = this.props;
-    const newItem = { id: '1',
-      name: 'user_id',
-      description: 'test',
-      type: 'string',
-      sensitivity: {
-        checked: true,
-        description: 'This is personal data, and cannot be distributed in raw form'
-      },
-      values: [
-        {
-          key: 'value1',
-          value: 'sadf',
-          description: 'dsfasdf'
-        },
-        {
-          key: 'value2',
-          value: 'ger',
-          description: 'hethg'
-        }
-      ]
-    };
-
-    dispatch(editItem(newItem));
+    dispatch(editItem(this.state.item));
 
     this.props.handleActionType(STATUS.VIEW);
   }
@@ -58,8 +52,10 @@ export class EditItem extends React.Component {
       <div key="EditItem" className="app__view-item app__table">
           <div className="row">
             <div className="col-md-4">
-              <label>Key name</label>
-              <input value={this.props.item.name} onChange={this.onInputChange}></input>
+              <label htmlFor="name">Key name</label>
+              <input value={this.state.item.name}
+                     id="name"
+                     onChange={this.onInputChange.bind(this)}></input>
             </div>
             <div className="col-md-4 ml-auto">
               <button onClick={this.handleActionType}>Save</button>
@@ -67,23 +63,27 @@ export class EditItem extends React.Component {
           </div>
 
           <div className="detail">
-            <label>Description</label>
+            <label htmlFor="description">Description</label>
             <textarea rows="3"
-                      defaultValue={this.props.item.description}
-                      onChange={this.onInputChange}>
+                      defaultValue={this.state.item.description}
+                      id="description"
+                      onChange={this.onInputChange.bind(this)}>
             </textarea>
           </div>
 
           <div className="detail">
-            <label>Type</label>
-            <input value={this.props.item.type} onChange={this.onInputChange}></input>
+            <label htmlFor="type">Type</label>
+            <input value={this.state.item.type}
+                   id="type"
+                   onChange={this.onInputChange.bind(this)}></input>
           </div>
 
           <div className="detail checkbox">
             <input type="checkbox"
-                    checked={this.props.item.sensitivity.checked}
-                    onChange={this.onInputChange}/>
-            <label></label>
+                    defaultChecked={this.state.item.sensitivity}
+                    id="sensitivity"
+                    onClick={this.onInputChange.bind(this)}/>
+            <label htmlFor="sensitivity"></label>
             Is this personal data?
           </div>
 

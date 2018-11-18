@@ -42,7 +42,7 @@ export default class ViewItem extends React.Component {
 
           <div className="detail">
             <label>Sensitivity</label>
-            <p>{this.props.item.sensitivity.description}</p>
+            <p>{this.props.item.sensitivity === 'on' ? 'This is personal data, and cannot be distributed in raw form':'This is not personal data'}</p>
           </div>
 
           <table>

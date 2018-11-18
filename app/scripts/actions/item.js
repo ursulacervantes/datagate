@@ -12,10 +12,7 @@ const items = [
     name: 'user_id',
     description: 'lala',
     type: 'integer',
-    sensitivity: {
-      checked: true,
-      description: 'This is personal data, and cannot be distributed in raw form'
-    },
+    sensitivity: 'on',
     values: [
       {
         key: 'value1',
@@ -33,10 +30,7 @@ const items = [
     name: 'item_id',
     description: 'lala',
     type: 'integer',
-    sensitivity: {
-      checked: false,
-      description: 'This is personal data, and cannot be distributed in raw form'
-    },
+    sensitivity: 'off',
     values: [
       {
         key: 'value1',
@@ -49,10 +43,7 @@ const items = [
     name: 'user_email',
     description: 'lala',
     type: 'string',
-    sensitivity: {
-      checked: true,
-      description: 'This is personal data, and cannot be distributed in raw form'
-    },
+    sensitivity: 'on',
     values: [
       {
         key: 'value1',
@@ -75,10 +66,7 @@ const items = [
     name: 'items_view',
     description: 'lala',
     type: 'string',
-    sensitivity: {
-      checked: true,
-      description: 'This is personal data, and cannot be distributed in raw form'
-    },
+    sensitivity: 'on',
     values: [
       {
         key: 'value1',
@@ -101,10 +89,7 @@ const items = [
     name: 'items_favorites',
     description: 'lala',
     type: 'string',
-    sensitivity: {
-      checked: true,
-      description: 'This is personal data, and cannot be distributed in raw form'
-    },
+    sensitivity: 'on',
     values: [
       {
         key: 'value1',
@@ -132,5 +117,5 @@ export const {
 } = createActions({
   [ActionTypes.GET_ITEM_LIST]: () => (items),
   [ActionTypes.GET_ITEM]: (id: string) => ({ id }),
-  [ActionTypes.EDIT_ITEM]: (item: object) => (item),
+  [ActionTypes.EDIT_ITEM]: (item: any) => (item),
 });

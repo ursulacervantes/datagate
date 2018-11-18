@@ -12,7 +12,6 @@ export class ItemList extends React.Component {
 
   constructor(props) {
     super(props);
-
     this.state = {
       active: ''
     };
@@ -21,6 +20,9 @@ export class ItemList extends React.Component {
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch(getItemList());
+    if (this.props.items.length > 0) {
+      this.setState({ active: this.props.items[0].id });
+    }
   }
 
   componentWillReceiveProps(nextProps) {
