@@ -25,6 +25,9 @@ export class Manage extends React.PureComponent {
   handleItemSelected = (item) => {
     const { dispatch } = this.props;
     dispatch(getItem(item));
+    this.setState({
+      action: STATUS.VIEW
+    });
   };
 
   handleActionType = (action) => {

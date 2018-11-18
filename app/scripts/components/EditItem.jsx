@@ -25,6 +25,10 @@ export class EditItem extends React.Component {
     };
   }
 
+  componentDidMount() {
+    this.setState({ item: this.props.item });
+  }
+
   componentWillReceiveProps(nextProps) {
     if (nextProps.item !== this.state.item) {
       this.setState({ item: nextProps.item });
