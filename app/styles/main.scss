@@ -31,6 +31,7 @@
 @import 'components/loader';
 @import 'components/logo';
 @import 'components/system-alerts';
+@import 'components/side-menu';
 @import 'components/table';
 
 // *** Containers
@@ -38,5 +39,6 @@
 
 // *** Routes
 @import 'routes/home';
+@import 'routes/manage';
 @import 'routes/private';
 @import 'routes/not-found';

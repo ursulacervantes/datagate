@@ -21,15 +21,19 @@ export class ItemList extends React.Component {
 
   handleClick = (e) => {
     e.preventDefault();
-    this.props.handleItemSelected(e.target.id);
+    this.props.handleItemSelected(e.target.parentElement.id);
   };
 
   render() {
     return (
       <div key="ItemList" className="app__item-list">
-          <ul>
+          <ul className="nav flex-column nav-pills side-menu">
             { !!this.props.items && this.props.items.map(v => (
-                <li key={v.id} id={v.id} onClick={this.handleClick}>{v.name}</li>
+                <li key={v.id} id={v.id}
+                    className="nav-item"
+                    onClick={this.handleClick.bind(this)}>
+                  <a className="nav-link">{v.name}</a>
+                </li>
             ))}
           </ul>
       </div>

@@ -1,0 +1,19 @@
+.side-menu {
+
+  a {
+    background-color: #404040;
+    color: white!important;
+
+    &:hover {
+      background-color: $app-color;
+    }
+    &.active {
+      background-color: $app-color;
+    }
+  }
+
+  .nav-link {
+    border-radius: 0;
+  }
+
+}

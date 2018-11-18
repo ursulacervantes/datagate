@@ -22,12 +22,8 @@ export class Manage extends React.PureComponent {
     super(props);
   }
 
-  // const [item, setItem] = useState('user_id');
-  // const [status, setStatus] = useState(STATUS.VIEW);
-
   handleItemSelected = (item) => {
     const { dispatch } = this.props;
-
     dispatch(getItem(item));
   };
 
@@ -39,19 +35,27 @@ export class Manage extends React.PureComponent {
 
   render() {
     return (
-      <div key="Manage">
+      <div key="Manage" className="app__manage">
         <div className="app__container">
           <div className="app__private__header">
             <h1>Manage Data</h1>
           </div>
-          <ItemList handleItemSelected={this.handleItemSelected} />
 
-          {this.state.action === STATUS.VIEW &&
-            !!this.props.seletectedItem &&
-            <ViewItem item={this.props.seletectedItem} handleActionType={this.handleActionType}/>}
-          {this.state.action === STATUS.EDIT &&
-            !!this.props.seletectedItem &&
-            <EditItem item={this.props.seletectedItem} handleActionType={this.handleActionType}/>}
+          <div className="row">
+            <div className="col-4">
+              <ItemList handleItemSelected={this.handleItemSelected} />
+            </div>
+            <div className="col-8 padding-30 border">
+              {this.state.action === STATUS.VIEW &&
+                !!this.props.seletectedItem &&
+                <ViewItem item={this.props.seletectedItem} handleActionType={this.handleActionType}/>}
+              {this.state.action === STATUS.EDIT &&
+                !!this.props.seletectedItem &&
+                <EditItem item={this.props.seletectedItem} handleActionType={this.handleActionType}/>}
+            </div>
+          </div>
+
+
 
         </div>
       </div>
@@ -61,7 +65,6 @@ export class Manage extends React.PureComponent {
 
 /* istanbul ignore next */
 function mapStateToProps(state) {
-
   return {
     seletectedItem: state.user.seletectedItem,
   };

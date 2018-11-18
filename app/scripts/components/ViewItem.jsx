@@ -19,24 +19,36 @@ export default class ViewItem extends React.Component {
 
   render() {
     return (
-      <div key="ViewItem" className="app__view-item">
+      <div key="ViewItem" className="app__view-item app__table">
+          <div className="row">
+            <div className="col-md-4">
+              <h4>{this.props.item.name}</h4>
+            </div>
+            <div className="col-md-4 ml-auto">
+              <button onClick={this.handleActionType}>Edit this</button>
+            </div>
+          </div>
 
-          <h1>{this.props.item.name}</h1>
-          <div onClick={this.handleActionType}>Edit this</div>
+          <div className="detail">
+            <label>Description</label>
+            <p>{this.props.item.description}</p>
+          </div>
 
-          <span>Description</span>
-          <p>{this.props.item.description}</p>
 
-          <span>Type</span>
-          <p>{this.props.item.type}</p>
+          <div className="detail">
+            <label>Type</label>
+            <p>{this.props.item.type}</p>
+          </div>
 
-          <span>Sensitivity</span>
-          <p>{this.props.item.sensitivity.description}</p>
+          <div className="detail">
+            <label>Sensitivity</label>
+            <p>{this.props.item.sensitivity.description}</p>
+          </div>
 
           <table>
             <thead>
-              <tr><th>Possible Values</th></tr>
-              <tr>
+              <tr><th className="__primary__title" colSpan="2">Possible Values</th></tr>
+              <tr className="__secondary__title">
                 <th>Value</th>
                 <th>Description</th>
               </tr>

@@ -55,27 +55,42 @@ export class EditItem extends React.Component {
 
   render() {
     return (
-      <div key="EditItem" className="app__view-item">
+      <div key="EditItem" className="app__view-item app__table">
+          <div className="row">
+            <div className="col-md-4">
+              <label>Key name</label>
+              <input value={this.props.item.name} onChange={this.onInputChange}></input>
+            </div>
+            <div className="col-md-4 ml-auto">
+              <button onClick={this.handleActionType}>Save</button>
+            </div>
+          </div>
 
-          <div onClick={this.handleActionType}>Save</div>
+          <div className="detail">
+            <label>Description</label>
+            <textarea rows="3"
+                      defaultValue={this.props.item.description}
+                      onChange={this.onInputChange}>
+            </textarea>
+          </div>
 
-          <span>Key name</span>
-          <input value={this.props.item.name} onChange={this.onInputChange}></input>
+          <div className="detail">
+            <label>Type</label>
+            <input value={this.props.item.type} onChange={this.onInputChange}></input>
+          </div>
 
-          <span>Description</span>
-          <input value={this.props.item.description} onChange={this.onInputChange}></input>
-
-          <span>Type</span>
-          <input value={this.props.item.type} onChange={this.onInputChange}></input>
-
-          <input type="checkbox" checked={this.props.item.sensitivity.checked} onChange={this.onInputChange}></input>
-
-          <p>Is this personal data?</p>
+          <div className="detail checkbox">
+            <input type="checkbox"
+                    checked={this.props.item.sensitivity.checked}
+                    onChange={this.onInputChange}/>
+            <label></label>
+            Is this personal data?
+          </div>
 
           <table>
             <thead>
-              <tr><th>Possible Values</th></tr>
-              <tr>
+              <tr><th className="__primary__title" colSpan="2">Possible Values</th></tr>
+              <tr className="__secondary__title">
                 <th>Value</th>
                 <th>Description</th>
               </tr>
