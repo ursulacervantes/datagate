@@ -26,8 +26,8 @@ export class ItemList extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (!!nextProps.items && nextProps.items.length > 0) {
-      this.setState({ active: nextProps.items[0].id });
+    if (!!nextProps.selectedItem) {
+      this.setState({ active: nextProps.selectedItem.id });
     }
   }
 

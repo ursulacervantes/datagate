@@ -12,7 +12,7 @@ const items = [
     name: 'user_id',
     description: 'lala',
     type: 'integer',
-    sensitivity: 'on',
+    sensitivity: true,
     values: [
       {
         key: 'value1',
@@ -30,7 +30,7 @@ const items = [
     name: 'item_id',
     description: 'lala',
     type: 'integer',
-    sensitivity: 'off',
+    sensitivity: false,
     values: [
       {
         key: 'value1',
@@ -43,7 +43,7 @@ const items = [
     name: 'user_email',
     description: 'lala',
     type: 'string',
-    sensitivity: 'on',
+    sensitivity: true,
     values: [
       {
         key: 'value1',
@@ -66,7 +66,7 @@ const items = [
     name: 'items_view',
     description: 'lala',
     type: 'string',
-    sensitivity: 'on',
+    sensitivity: true,
     values: [
       {
         key: 'value1',
@@ -89,7 +89,7 @@ const items = [
     name: 'items_favorites',
     description: 'lala',
     type: 'string',
-    sensitivity: 'on',
+    sensitivity: true,
     values: [
       {
         key: 'value1',

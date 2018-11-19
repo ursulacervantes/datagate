@@ -19,7 +19,7 @@ export default class EditItem extends React.Component {
         description: '',
         id: '',
         name: '',
-        sensitivity: 'on',
+        sensitivity: true,
         type: '',
         values: []
       }
@@ -27,12 +27,10 @@ export default class EditItem extends React.Component {
   }
 
   componentDidMount() {
-    console.log('did mount ',this.props.item );
     this.setState({ item: this.props.item });
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log('will received ',nextProps.item );
     if (nextProps.item !== this.state.item) {
       this.setState({ item: nextProps.item });
     }
@@ -41,7 +39,8 @@ export default class EditItem extends React.Component {
   onInputChange = (e) => {
     const item = {
       ...this.state.item,
-      [e.target.id]: e.target.value,
+      [e.target.id]: e.target.id === 'sensitivity' ?
+          e.target.checked : e.target.value,
     }
 
     this.setState({
@@ -87,7 +86,7 @@ export default class EditItem extends React.Component {
 
           <div className="detail checkbox">
             <input type="checkbox"
-                    defaultChecked={this.state.item.sensitivity}
+                    checked={this.state.item.sensitivity}
                     id="sensitivity"
                     onClick={this.onInputChange.bind(this)}/>
             <label htmlFor="sensitivity"></label>

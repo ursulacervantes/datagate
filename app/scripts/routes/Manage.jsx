@@ -51,7 +51,9 @@ export class Manage extends React.PureComponent {
 
           <div className="row">
             <div className="col-4">
-              <ItemList handleItemSelected={this.handleItemSelected} />
+              <ItemList handleItemSelected={this.handleItemSelected}
+                        selectedItem = {this.props.selectedItem}
+              />
             </div>
             <div className="col-8 padding-30 border">
               {this.state.action === STATUS.VIEW &&
@@ -65,9 +67,6 @@ export class Manage extends React.PureComponent {
                 />}
             </div>
           </div>
-
-
-
         </div>
       </div>
     );
