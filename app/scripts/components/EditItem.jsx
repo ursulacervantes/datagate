@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { editItem } from 'actions';
 import { STATUS } from 'constants/index';
 
-export class EditItem extends React.Component {
+export default class EditItem extends React.Component {
 
   static propTypes = {
     item: PropTypes.object,
@@ -20,24 +20,29 @@ export class EditItem extends React.Component {
         id: '',
         name: '',
         sensitivity: 'on',
-        type: ''
+        type: '',
+        values: []
       }
     };
   }
 
   componentDidMount() {
+    console.log('did mount ',this.props.item );
     this.setState({ item: this.props.item });
   }
 
   componentWillReceiveProps(nextProps) {
+    console.log('will received ',nextProps.item );
     if (nextProps.item !== this.state.item) {
       this.setState({ item: nextProps.item });
     }
   }
 
   onInputChange = (e) => {
-    let { item } = this.state;
-    item[e.target.id] = e.target.value;
+    const item = {
+      ...this.state.item,
+      [e.target.id]: e.target.value,
+    }
 
     this.setState({
       item,
@@ -45,9 +50,7 @@ export class EditItem extends React.Component {
   }
 
   handleActionType = () => {
-    const { dispatch } = this.props;
-    dispatch(editItem(this.state.item));
-
+    this.props.editItem(this.state.item);
     this.props.handleActionType(STATUS.VIEW);
   }
 
@@ -100,7 +103,7 @@ export class EditItem extends React.Component {
               </tr>
             </thead>
             <tbody>
-              {this.props.item.values
+              {this.state.item.values
                 .map(v => (
                   <tr key={v.key}>
                     <td>{v.value}</td>
@@ -114,13 +117,3 @@ export class EditItem extends React.Component {
     );
   }
 }
-
-/* istanbul ignore next */
-function mapStateToProps(state) {
-
-  return {
-    item: state.user.seletectedItem,
-  };
-}
-
-export default connect(mapStateToProps)(EditItem);

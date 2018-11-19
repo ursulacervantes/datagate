@@ -43,7 +43,7 @@ export class RequestList extends React.Component {
 
           <div className="app__table__filter">
             {filterItems.map(filterItem =>
-                <a key={filterItem} 
+                <a key={filterItem}
                   onClick={this.filterList.bind(this)}
                   className={this.state.active === filterItem ? 'active' : ''}>
                   {filterItem}
@@ -82,7 +82,7 @@ export class RequestList extends React.Component {
 
 /* istanbul ignore next */
 function mapStateToProps(state) {
-  const { requests=[], filterValue='' } = state.user;
+  const { requests=[], filterValue='' } = state.requests;
   if(filterValue === 'ALL') {
     return {
       requests

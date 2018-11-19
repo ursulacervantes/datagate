@@ -5,33 +5,33 @@ import { ActionTypes, STATUS } from 'constants/index';
 
 export const itemState = {
   items: [],
-  seletectedItem: {},
+  selectedItem: {},
   dataStatus: STATUS.VIEW,
 };
 
 export default {
-  user: handleActions({
-    [ActionTypes.GET_ITEM_LIST]: (state, { payload }) => {
-      return immutable(state, {
-        items: { $set: payload },
-        seletectedItem: payload.length > 0 ? { $set: payload[0] } : {},
-      })
-    },
+  items: handleActions({
+    [ActionTypes.GET_ITEM_LIST]: (state, { payload }) => immutable(state, {
+      items: { $set: payload },
+      selectedItem: payload.length > 0 ? { $set: payload[0] } : {},
+    }),
     [ActionTypes.GET_ITEM]: (state, { payload: { id } }) => {
       const item = state.items.find(d => d.id === id);
       return immutable(state, {
-        seletectedItem: { $set: item },
+        selectedItem: { $set: item },
       });
     },
     [ActionTypes.EDIT_ITEM]: (state, { payload }) => {
-      state.items.forEach((e) => {
-      	if(e.id === payload.id) {
-          e = payload;
-        }
-
-      });
       return immutable(state, {
-        seletectedItem: { $set: payload },
+        items: { $set: state.items.map((e) => {
+          if (e.id === payload.id) {
+            return { ...payload }
+          }
+          else {
+            return e;
+          }
+        }) },
+        selectedItem: { $set: payload },
       });
 
     },

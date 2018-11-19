@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { getItem } from 'actions';
+import { getItem, editItem } from 'actions';
 import { STATUS } from 'constants/index';
 
 import ItemList from 'components/ItemList';
@@ -11,7 +11,7 @@ import EditItem from 'components/EditItem';
 
 export class Manage extends React.PureComponent {
   static propTypes = {
-    seletectedItem: PropTypes.object,
+    selectedItem: PropTypes.object,
   };
 
   state = {
@@ -36,6 +36,11 @@ export class Manage extends React.PureComponent {
     });
   };
 
+  editItem = (item) => {
+    const { dispatch } = this.props;
+    dispatch(editItem(item));
+  };
+
   render() {
     return (
       <div key="Manage" className="app__manage">
@@ -50,11 +55,14 @@ export class Manage extends React.PureComponent {
             </div>
             <div className="col-8 padding-30 border">
               {this.state.action === STATUS.VIEW &&
-                !!this.props.seletectedItem &&
-                <ViewItem item={this.props.seletectedItem} handleActionType={this.handleActionType}/>}
+                !!this.props.selectedItem && !!this.props.selectedItem.values &&
+                <ViewItem item={this.props.selectedItem} handleActionType={this.handleActionType}/>}
               {this.state.action === STATUS.EDIT &&
-                !!this.props.seletectedItem &&
-                <EditItem item={this.props.seletectedItem} handleActionType={this.handleActionType}/>}
+                !!this.props.selectedItem && !!this.props.selectedItem.values &&
+                <EditItem item={this.props.selectedItem}
+                          handleActionType={this.handleActionType}
+                          editItem={this.editItem}
+                />}
             </div>
           </div>
 
@@ -69,7 +77,7 @@ export class Manage extends React.PureComponent {
 /* istanbul ignore next */
 function mapStateToProps(state) {
   return {
-    seletectedItem: state.user.seletectedItem,
+    selectedItem: state.items.selectedItem,
   };
 }
 

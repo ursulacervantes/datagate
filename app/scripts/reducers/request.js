@@ -9,7 +9,7 @@ export const requestState = {
 };
 
 export default {
-  user: handleActions({
+  requests: handleActions({
     [ActionTypes.GET_REQUEST_LIST]: (state, { payload }) => immutable(state, {
       requests: { $set: payload },
     }),
