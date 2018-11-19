@@ -6,29 +6,19 @@ const RoutePrivate = ({ component: Component, isAuthenticated, to, ...rest }) =>
   <Route
     {...rest}
     render={props => (
-      isAuthenticated
-        ? (<Component {...props} />)
-        : (
-          <Redirect
-            to={{
-              pathname: to,
-              state: { redirect: props.location.pathname, isAuthenticated },
-            }}
-          />
-        )
+      <Component {...props} />
     )}
   />
 );
 
 RoutePrivate.propTypes = {
   component: PropTypes.func.isRequired,
-  isAuthenticated: PropTypes.bool.isRequired,
   location: PropTypes.object,
   to: PropTypes.string,
 };
 
 RoutePrivate.defaultProps = {
-  to: '/',
+  to: '/request',
 };
 
 export default RoutePrivate;

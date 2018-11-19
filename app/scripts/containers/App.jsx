@@ -9,7 +9,6 @@ import treeChanges from 'tree-changes';
 import history from 'modules/history';
 
 import config from 'config';
-import { showAlert } from 'actions';
 
 import Home from 'routes/Home';
 import Manage from 'routes/Manage';
@@ -18,9 +17,7 @@ import Private from 'routes/Private';
 import Request from 'routes/Request';
 
 import Header from 'containers/Header';
-import SystemAlerts from 'containers/SystemAlerts';
 
-import Footer from 'components/Footer';
 import RoutePublic from 'components/RoutePublic';
 import RoutePrivate from 'components/RoutePrivate';
 
@@ -34,11 +31,6 @@ export class App extends React.Component {
   componentWillReceiveProps(nextProps) {
     const { dispatch } = this.props;
     const { changedTo } = treeChanges(this.props, nextProps);
-
-    /* istanbul ignore else */
-    if (changedTo('user.isAuthenticated', true)) {
-      dispatch(showAlert('Hello! And welcome!', { type: 'success', icon: 'i-trophy' }));
-    }
   }
 
   render() {
@@ -48,7 +40,7 @@ export class App extends React.Component {
       <ConnectedRouter history={history}>
         <div
           className={cx('app', {
-            'app--private': user.isAuthenticated,
+            'app--private': true,
           })}
         >
           <Helmet
@@ -59,18 +51,16 @@ export class App extends React.Component {
             titleTemplate={`%s | ${config.name}`}
             titleAttributes={{ itemprop: 'name', lang: 'pt-br' }}
           />
-          {user.isAuthenticated && <Header dispatch={dispatch} user={user} />}
+          <Header dispatch={dispatch} user={user} />
           <main className="app__main">
             <Switch>
-              <RoutePublic isAuthenticated={user.isAuthenticated} path="/" exact component={Home} />
-              <RoutePrivate isAuthenticated={user.isAuthenticated} path="/private" component={Private} />
-              <RoutePrivate isAuthenticated={user.isAuthenticated} path="/manage" component={Manage} />
-              <RoutePrivate isAuthenticated={user.isAuthenticated} path="/request" component={Request} />
+              <RoutePrivate isAuthenticated={true} path="/" exact component={Request} />
+              <RoutePrivate isAuthenticated={true} path="/private" component={Private} />
+              <RoutePrivate isAuthenticated={true} path="/manage" component={Manage} />
+              <RoutePrivate isAuthenticated={true} path="/request" component={Request} />
               <Route component={NotFound} />
             </Switch>
           </main>
-          <Footer />
-          <SystemAlerts alerts={app.alerts} dispatch={dispatch} />
         </div>
       </ConnectedRouter>
     );

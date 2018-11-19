@@ -6,21 +6,18 @@ const RoutePublic = ({ component: Component, isAuthenticated, to, ...rest }) => 
   <Route
     {...rest}
     render={props => (
-      isAuthenticated
-        ? (<Redirect to={to} />)
-        : (<Component {...props} />)
+      <Component {...props} />
     )}
   />
 );
 
 RoutePublic.propTypes = {
   component: PropTypes.func.isRequired,
-  isAuthenticated: PropTypes.bool.isRequired,
   to: PropTypes.string,
 };
 
 RoutePublic.defaultProps = {
-  to: '/manage',
+  to: '/request',
 };
 
 export default RoutePublic;

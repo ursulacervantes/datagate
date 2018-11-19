@@ -20,13 +20,13 @@ export class ItemList extends React.Component {
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch(getItemList());
-    if (this.props.items.length > 0) {
+    if (!!this.props.items && this.props.items.length > 0) {
       this.setState({ active: this.props.items[0].id });
     }
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.items.length > 0) {
+    if (!!nextProps.items && nextProps.items.length > 0) {
       this.setState({ active: nextProps.items[0].id });
     }
   }

@@ -69,7 +69,7 @@ export class EditItem extends React.Component {
           <div className="detail">
             <label htmlFor="description">Description</label>
             <textarea rows="3"
-                      defaultValue={this.state.item.description}
+                      value={this.state.item.description}
                       id="description"
                       onChange={this.onInputChange.bind(this)}>
             </textarea>
