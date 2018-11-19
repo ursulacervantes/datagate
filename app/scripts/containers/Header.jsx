@@ -14,7 +14,6 @@ export default class Header extends React.PureComponent {
     this.state = {
       active: menuItems[0]
     };
-    debugger;
   }
 
   selectMenu(e) {
