@@ -16,9 +16,7 @@ export class Home extends React.PureComponent {
 
   handleClickLogin = (e) => {
     e.preventDefault();
-    const { dispatch } = this.props;
-
-    dispatch(login());
+    this.props.login();
   };
 
   render() {
@@ -54,4 +52,8 @@ function mapStateToProps(state) {
   return { user: state.user };
 }
 
-export default connect(mapStateToProps)(Home);
+const mapDispatch = dispatch => ({
+  login: () => dispatch(login()),
+});
+
+export default connect(mapStateToProps,mapDispatch)(Home);

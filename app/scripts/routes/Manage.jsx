@@ -23,8 +23,7 @@ export class Manage extends React.PureComponent {
   }
 
   handleItemSelected = (item) => {
-    const { dispatch } = this.props;
-    dispatch(getItem(item));
+    this.props.getItem(item);
     this.setState({
       action: STATUS.VIEW
     });
@@ -37,8 +36,7 @@ export class Manage extends React.PureComponent {
   };
 
   editItem = (item) => {
-    const { dispatch } = this.props;
-    dispatch(editItem(item));
+    this.props.editItem(item);
   };
 
   render() {
@@ -80,4 +78,9 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(Manage);
+const mapDispatch = dispatch => ({
+  getItem: item => dispatch(getItem(item)),
+  editItem: item => dispatch(editItem(item)),
+});
+
+export default connect(mapStateToProps, mapDispatch)(Manage);

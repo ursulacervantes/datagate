@@ -18,8 +18,7 @@ export class ItemList extends React.Component {
   }
 
   componentDidMount() {
-    const { dispatch } = this.props;
-    dispatch(getItemList());
+    this.props.getItemList();
     if (!!this.props.items && this.props.items.length > 0) {
       this.setState({ active: this.props.items[0].id });
     }
@@ -63,4 +62,8 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(ItemList);
+const mapDispatch = dispatch => ({
+  getItemList: () => dispatch(getItemList()),
+});
+
+export default connect(mapStateToProps,mapDispatch)(ItemList);

@@ -26,15 +26,13 @@ export class RequestList extends React.Component {
   }
 
   componentDidMount() {
-    const { dispatch } = this.props;
-    dispatch(getRequestList());
+    this.props.getRequestList();
   }
 
   filterList = (e) => {
     e.preventDefault();
     this.setState({ active: e.target.innerText});
-    const { dispatch } = this.props;
-    dispatch(filterRequestList(e.target.innerText));
+    this.props.filterRequestList(e.target.innerText);
   };
 
   render() {
@@ -94,4 +92,9 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(RequestList);
+const mapDispatch = dispatch => ({
+  getRequestList: () => dispatch(getRequestList()),
+  filterRequestList: filter => dispatch(filterRequestList(filter)),
+});
+
+export default connect(mapStateToProps,mapDispatch)(RequestList);
