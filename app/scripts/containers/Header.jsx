@@ -6,13 +6,17 @@ const menuItems = [
    'manage',
 ];
 
+const getActiveRoute = () => {
+  return menuItems.find(m => window.location.href.indexOf(m) > -1);
+}
+
 export default class Header extends React.PureComponent {
 
   constructor(props) {
     super(props);
 
     this.state = {
-      active: menuItems[0]
+      active: getActiveRoute()
     };
   }
 
