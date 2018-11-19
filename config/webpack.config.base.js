@@ -2,20 +2,11 @@
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
-const dateFns = require('date-fns');
-const GitInfoPlugin = require('git-info-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const paths = require('./paths');
 
-const NPMPackage = require(paths.packageJson);
-
-const { NODE_ENV } = process.env;
 const isProd = process.env.NODE_ENV === 'production';
-
-const gitInfoPlugin = new GitInfoPlugin({
-  hashCommand: 'rev-parse --short HEAD',
-});
 
 const cssLoaders = [
   isProd ? MiniCssExtractPlugin.loader : { loader: 'style' },
@@ -77,14 +68,6 @@ module.exports = {
   },
   plugins: [
     new webpack.NoEmitOnErrorsPlugin(),
-    gitInfoPlugin,
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(NODE_ENV || 'development'),
-      APP__BRANCH: JSON.stringify(gitInfoPlugin.branch()),
-      APP__BUILD_DATE: JSON.stringify(dateFns.format(new Date(), 'DD/MM/YYYY')),
-      APP__GITHASH: JSON.stringify(gitInfoPlugin.hash()),
-      APP__VERSION: JSON.stringify(NPMPackage.version),
-    }),
     new CircularDependencyPlugin({
       exclude: /node_modules/,
       failOnError: true,
