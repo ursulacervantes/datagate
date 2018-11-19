@@ -116,16 +116,6 @@ module.exports = yargs
     desc: 'build and publish',
     handler: deploy,
   })
-  .command({
-    command: 'upstream',
-    desc: 'has new remote commits',
-    handler: checkUpstream,
-  })
-  .command({
-    command: 'update',
-    desc: 'run `npm update` if package.json has changed',
-    handler: updateDependencies,
-  })
   .demandCommand()
   .help()
   .wrap(72)
