@@ -75,4 +75,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps,mapDispatch)(App);
+export default connect(mapStateToProps)(App);
